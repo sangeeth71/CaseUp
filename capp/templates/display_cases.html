@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{%block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card" style="margin:20px">
+                <h5 class="card-header">Table Basic</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-success">
+                    <thead>
+                      <tr>
+                        <th>Cover_Name</th>
+                        <th>Phone_Model</th>
+                        <th>Price</th>
+                        <th>Material</th>
+                        <th>Description</th>
+                        <th>Cover_Image</th>
+                        <th>Quantity</th>
+                        <th>Option</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                    {% for i in data %}
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{i.Cover_Name}}</strong></td>
+                        <td>{{i.Phone_Model}}</td>
+                        <td>{{i.Price}}</td>
+                        <td>{{i.Material}}</td>
+                        <td>{{i.Description}}</td>
+                        <td><img src="{{i.Cover_Image.url}}" alt="" width="70px"></td>
+                        <td>{{i.Quantity}}</td>
+                        <td>
+                          <a href="{% url 'edit_cases' case_id=i.id %}"><button class="btn btn-success">Edit</button></a>
+                          <a href="{% url 'delete_cases' case_id=i.id %}"><button class="btn btn-danger">Delete</button></a>
+                        </td>
+
+
+                      </tr>
+                    {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}

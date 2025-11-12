@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <table class="table table-warning text-center table-bordered" style="margin:50px;width:1200px">
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Option</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{i.Name}}</td>
+        <td>{{i.Email}}</td>
+        <td>{{i.Message}}</td>
+            <td>
+                <a href=""><button class="btn btn-warning">Replay</button></a>
+                <a href="{% url 'del_message' m_id=i.id %}"><button class="btn btn-danger">Delete</button></a>
+            </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+</body>
+</html>
+{% endblock %}

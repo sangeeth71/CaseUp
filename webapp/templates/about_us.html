@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Case_store</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="{% static 'web/css/about_us_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'web/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'web/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'web/js/modernizr.js"></script>
+    <style>
+      .image-holder imgg {
+      height: 300px;         /* set desired uniform height */
+      width: 100%;           /* make the image fill the container width */
+      object-fit: cover;     /* crop image proportionally to fit */
+      border-radius: 10px;   /* optional: smooth edges */
+      }
+    </style>
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+<!--      search icon-->
+      <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <title>Search</title>
+        <path fill="currentColor" d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z" />
+      </symbol>
+<!--      user icon-->
+      <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+      </symbol>
+<!--     cart icon-->
+      <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 16 16">
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </symbol>
+
+<!--      quote icon-->
+      <symbol xmlns="http://www.w3.org/2000/svg" id="quote" viewBox="0 0 24 24">
+        <path fill="currentColor" d="m15 17l2-4h-4V6h7v7l-2 4h-3Zm-9 0l2-4H4V6h7v7l-2 4H6Z" />
+      </symbol>
+
+
+      <symbol xmlns="http://www.w3.org/2000/svg" id="nav-icon" viewBox="0 0 16 16">
+        <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 16 16">
+        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
+        <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+      </symbol>
+    </svg>
+
+    <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
+      <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">
+            <img src="{% static 'web/image/logooo.png' %}" alt="" width="150px">
+          </a>
+          <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <svg class="navbar-icon">
+              <use xlink:href="#navbar-icon"></use>
+            </svg>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+            <div class="offcanvas-header px-4 pb-0">
+              <a class="navbar-brand" href="index.html">
+            <img src="{% static 'web/image/logooo.png' %}" alt="" width="150px">
+              </a>
+              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link me-4 " href="{% url 'home_page' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4 " href="{% url 'all_products' %}">Products</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Materials</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="{% url 'all_materials' %}" class="dropdown-item ">All Materials</a>
+                    </li>
+                    {% for i in categories %}
+
+                    <li>
+                      <a href="{% url 'material_filter_page' mate=i.Material_Name %}" class="dropdown-item ">{{i.Material_Name}}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link me-4 active" href="{% url 'about_us' %}">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="{% url 'contact_page' %}">Contact</a>
+                </li>
+
+                {% if request.session.username %}
+							<a href="#" class="user-account for-buy"><i
+									class="icon icon-user"></i><span>{{request.session.username}} </span>
+							</a>
+                  <a href=""> </a>
+                  <a href="{% url 'log_out' %}" style="color:red;">log_out</a>
+							{% else %}
+
+							<a href="{% url 'log_in' %}" class="user-account for-buy"><i
+									class="icon icon-user"></i><span>Login</span>
+							</a>
+							{% endif %}
+                </li>
+                <li class="nav-item ">
+                  <div class="user-items ps-5">
+                    <ul class="d-flex justify-content-end list-unstyled">
+                      <li class="search-item pe-3">
+                        <a href="#" class="search-button">
+                          <svg class="search">
+                            <use xlink:href="#search"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li class="pe-3">
+                        <a href="#">
+                          <svg class="user">
+                            <use xlink:href="#user"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'cart_page' %}">
+                          <svg class="cart">
+                            <use xlink:href="#cart"></use>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+<!--=================================================================================================================-->
+    <div >
+        <img src="{% static 'web/image/collection-banner_iPhone_Cases_Desktop.webp' %}" alt="" width="100%">
+    </div>
+
+    <div class="about-container">
+        <h2>Welcome to buycover</h2>
+
+        <p>
+            Your device connects you to the world. We're here to protect it.
+            Our mission is simple: be your most trusted source for high-quality, stylish, and durable cases.
+            We believe in an honest promise: <strong>We sell quality products for fair prices.</strong>
+        </p>
+
+        <div class="why-us">
+            <h3>Why You Should Buy Cases From Us</h3>
+            <ul>
+                <li><strong>Premium Quality:</strong> We source and test every case for durability and a perfect fit.</li>
+                <li><strong>Fair Prices:</strong> We work directly with manufacturers to cut out the middleman, passing the savings to you.</li>
+                <li><strong>Curated Styles:</strong> From sleek minimalist designs to rugged armor, we've hand-picked the best.</li>
+                <li><strong>More Than Cases:</strong> We also offer essential accessories <strong>and add-ons</strong> like screen protectors and chargers.</li>
+            </ul>
+        </div>
+
+        <a href="{% url 'all_products' %}" class="cta-button">Shop All Cases</a>
+    </div>
+<!--===============================================================================================================-->
+<section>
+<!--  blank <space-->
+  <div style="height:100px"></div>
+</section>
+<!--=========================================================================================================-->
+    <footer id="footer" class="overflow-hidden">
+      <div class="container">
+        <div class="row">
+          <div class="footer-top-area">
+            <div class="row d-flex flex-wrap justify-content-between">
+<!--             -->
+              <div class="col-lg-2 col-sm-6 pb-3">
+                <div class="footer-menu text-uppercase">
+                  <h5 class="widget-title pb-2">Quick Links</h5>
+                  <ul class="menu-list list-unstyled text-uppercase">
+                    <li class="menu-item pb-2">
+                      <a href="#">Home</a>
+                    </li>
+                    <li class="menu-item pb-2">
+                      <a href="{% url 'about_us' %}">About</a>
+                    </li>
+                    <li class="menu-item pb-2">
+                      <a href="#">Shop</a>
+                    </li>
+                    <li class="menu-item pb-2">
+                      <a href="#">Blogs</a>
+                    </li>
+                    <li class="menu-item pb-2">
+                      <a href="#">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-sm-6 pb-3">
+                <div class="footer-menu text-uppercase">
+                  <h5 class="widget-title pb-2">Help & Info Help</h5>
+                  <ul class="menu-list list-unstyled">
+                    <li class="menu-item pb-2">
+                      <a href="#">Track Your Order</a>
+                    </li>
+                    <li class="menu-item pb-2">
+                      <a href="#">Returns Policies</a>
+                    </li>
+                    <li class="menu-item pb-2">
+                      <a href="#">Shipping + Delivery</a>
+                    </li>
+                    <li class="menu-item pb-2">
+                      <a href="#">Contact Us</a>
+                    </li>
+                    <li class="menu-item pb-2">
+                      <a href="#">Faqs</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-sm-6 pb-3">
+                <div class="footer-menu contact-item">
+                  <h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
+                  <p>Do you have any queries or suggestions? <a href="mailto:">sangeeth629@gmail.com</a>
+                  </p>
+                  <p>If you need support? Just give us a call. <a href="">+55 111 222 333 44</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </footer>
+
+    <script src="{% static 'web/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="{% static 'web/js/bootstrap.bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/plugins.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/script.js' %}"></script>
+  </body>
+</html>

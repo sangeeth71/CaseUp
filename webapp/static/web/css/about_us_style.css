@@ -1,0 +1,88 @@
+body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(to right, #4a90e2, #50e3c2); /* Example gradient */
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .hero-banner h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        /* Content Container */
+        .about-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .about-container h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .about-container p {
+            font-size: 1.1em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .why-us {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px 30px;
+        }
+
+        .why-us h3 {
+            border-bottom: 2px solid #50e3c2;
+            padding-bottom: 10px;
+        }
+
+        .why-us ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .why-us li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* Custom checkmark bullet */
+        .why-us li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #50e3c2;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: block;
+            width: 200px;
+            margin: 40px auto;
+            padding: 12px 20px;
+            background-color: #4a90e2;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #357ABD;
+        }
