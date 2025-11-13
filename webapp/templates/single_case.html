@@ -118,7 +118,7 @@
                   <a href="{% url 'log_out' %}" style="color:red;">log_out</a>
 							{% else %}
 
-							<a href="{% url 'sign_in' %}" class="user-account for-buy"><i
+							<a href="{% url 'log_in' %}" class="user-account for-buy"><i
 									class="icon icon-user"></i><span>Login</span>
 							</a>
 							{% endif %}
@@ -183,7 +183,7 @@
                 <p style="font-size: 1.1em; color: #888; margin-top: 0; margin-bottom: 20px;">iphone{{ single.Phone_Model }}</p>
 
                 <div style="margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
-                    <span style="font-size: 2.5em; font-weight: 700; color: #4CAF50;">₹{{ single.Price }}</span>
+                    <span style="font-size: 1.5em; font-weight: 500; color: black;" > ₹{{ single.Price }}</span>
                     <span style="font-size: 1.2em; color: #bbb; text-decoration: line-through; margin-left: 15px;"></span>
                 </div>
 
@@ -192,10 +192,34 @@
 
 
                     <div style="margin-bottom: 40px;">
-                        <label for="quantity" style="display: block; font-weight: 600; margin-bottom: 10px; color: #555;">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1"
-                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 80px; text-align: center; font-size: 1em;">
+
+                        <input type="number" id="quantity" name="quantity"  min="1" placeholder="Quantity"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
+                    </div>                    <div style="margin-bottom: 40px;">
+
+                        <input type="hidden" id="price" name="price"  min="1" placeholder="Quantity" value="{{ single.Price }}"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
                     </div>
+                    <div style="margin-bottom: 40px;">
+                        <input type="hidden" id="total" name="total" placeholder="Total Price"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <input type="hidden" id="" name="" value="{{ single.Cover_Name }}"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <input type="hidden" id="" name="" value="{{ single.Price }}"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <input type="hidden" id="" name="" value="{{request.session.username}}"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
+                    </div>
+                    <div style="margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                    <span style="font-size: 2.5em; font-weight: 700; color: #4CAF50;" id="total_text"></span>
+                    <span style="font-size: 1.2em; color: #bbb; text-decoration: line-through; margin-left: 15px;"></span>
+                </div>
 
                     <div>
                         <button type="submit"
@@ -285,9 +309,22 @@
     </footer>
 
     <script src="{% static 'web/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'web/js/jquery-3.7.1.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="{% static 'web/js/bootstrap.bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/plugins.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/script.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#quantity").change(function(){
+                    x=document.getElementById("quantity").value;
+                    y=document.getElementById("price").value;
+                    result=x*y
+                    document.getElementById("total").value=result;
+                    document.getElementById("total_text").innerHTML=" ₹"+result;
+
+                })
+        })
+    </script>
   </body>
 </html>

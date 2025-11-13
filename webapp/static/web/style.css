@@ -1,10 +1,10 @@
 /*
 Theme Name: Ministore
-Theme URI: 
-Author: 
-Author URI: 
+Theme URI:
+Author:
+Author URI:
 Description: Ministore is specially designed product packaged for Ministore by Moksha.
-Version: 
+Version:
 */
 
 /*--------------------------------------------------------------
@@ -19,7 +19,7 @@ This is main CSS file that contains custom style rules used in this template
 
 CSS STRUCTURE:
 
-    
+
 /*--------------------------------------------------------------
 /** 1. VARIABLES
 --------------------------------------------------------------*/
@@ -598,8 +598,8 @@ h3.cart-title {
 .navbar-nav .nav-item a.nav-link {
     color: var(--accent-color);
 }
-.navbar-nav .nav-item a.nav-link.active, 
-.navbar-nav .nav-item a.nav-link:focus, 
+.navbar-nav .nav-item a.nav-link.active,
+.navbar-nav .nav-item a.nav-link:focus,
 .navbar-nav .nav-item a.nav-link:hover {
     color: var(--primary-color);
 }
@@ -962,7 +962,7 @@ figure.instagram-item img.insta-image {
 .product-info-tabs .nav-tabs .nav-link {
     border: none;
 }
-.product-info-tabs .nav-tabs .nav-item.show .nav-link, 
+.product-info-tabs .nav-tabs .nav-item.show .nav-link,
 .product-info-tabs .nav-tabs .nav-link.active {
     color: var(--primary-color);
 }
