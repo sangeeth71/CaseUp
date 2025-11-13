@@ -118,7 +118,7 @@
                   <a href="{% url 'log_out' %}" style="color:red;">log_out</a>
 							{% else %}
 
-							<a href="{% url 'sign_in' %}" class="user-account for-buy"><i
+							<a href="{% url 'log_in' %}" class="user-account for-buy"><i
 									class="icon icon-user"></i><span>Login</span>
 							</a>
 							{% endif %}
@@ -192,9 +192,25 @@
 
 
                     <div style="margin-bottom: 40px;">
-                        <label for="quantity" style="display: block; font-weight: 600; margin-bottom: 10px; color: #555;">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1"
-                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 80px; text-align: center; font-size: 1em;">
+
+                        <input type="number" id="quantity" name="quantity"  min="1" placeholder="Quantity"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <input type="text" id="" name="total" placeholder="Total Price"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <input type="hidden" id="" name="quantity" value="{{ single.Cover_Name }}"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <input type="hidden" id="" name="quantity" value="{{ single.Price }}"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <input type="hidden" id="" name="quantity" value="{{request.session.username}}"
+                               style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;  text-align: center; font-size: 1em;">
                     </div>
 
                     <div>
