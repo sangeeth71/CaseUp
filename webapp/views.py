@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from capp.models import CategoryDb,CaseDb
-from webapp.models import RegistrationDb
+from webapp.models import RegistrationDb, CartDB
 from webapp.models import MessageDb
+from django.contrib import messages
 
 
 # Create your views here.
@@ -22,7 +23,8 @@ def contact_page(request):
     categories = CategoryDb.objects.all()
     return render(request,"contact.html",{'categories':categories})
 def cart_page(request):
-    return render(request,"cart_page.html")
+    cases=CartDB.objects.all()
+    return render(request,"cart_page.html",{'cases':cases})
 def filtered_page(request,model):
     cover=CaseDb.objects.filter(Phone_Model=model )
     return render(request,"filtered.html",{'cover':cover})
@@ -77,3 +79,20 @@ def save_message(request):
         obj=MessageDb(Name=name,Email=email,Message=msg)
         obj.save()
         return redirect(contact_page)
+
+def save_cart(request):
+    if request.method=="POST":
+        cover_name=request.POST.get('covername')
+        qty=int(request.POST.get('quantity'))
+        price=int(request.POST.get('price'))
+        total=int(request.POST.get('total'))
+        uname=request.POST.get('user_name')
+        case=CaseDb.objects.filter(Cover_Name=cover_name).first()
+        img=case.Cover_Image if case else None
+        obj=CartDB(Username=uname,CoverName=cover_name,Quantity=qty,Price=price,
+                   Total_Price=total,Case_Image=img)
+        obj.save()
+        messages.success(request, "Added to Cart")
+
+
+        return redirect(home_page)

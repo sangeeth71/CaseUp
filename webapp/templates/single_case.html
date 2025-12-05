@@ -197,7 +197,8 @@
                 <span style="font-size: 1.2em; color: #bbb; text-decoration: line-through; margin-left: 15px;"></span>
             </div>
 
-            <form action="/add-to-cart" method="POST">
+            <form action="{% url 'save_cart' %}" method="POST">
+                {% csrf_token %}
 
                 <div style="margin-bottom: 40px;">
                     <input type="number" id="quantity" name="quantity" min="1" value="1" placeholder="Quantity"

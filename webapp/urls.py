@@ -17,6 +17,7 @@ urlpatterns=[
     path('user_login_fn/',views.user_login_fn,name="user_login_fn"),
     path('log_out/',views.log_out,name="log_out"),
     path('save_message/',views.save_message,name="save_message"),
+    path('save_cart/',views.save_cart,name="save_cart"),
 
 
 ]

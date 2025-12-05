@@ -173,10 +173,17 @@
 					<th>Total Price</th>
 					<th>delete</th>
 				</tr>
+                    {% for i in cases %}
 				<tr>
-                    <td></td>
+                    <td><img src="{{i.Case_Image.url}}" alt="" width="90px"></td>
+                    <td>{{i.CoverName}}</td>
+                    <td>{{i.Price}}</td>
+                    <td>{{i.Quantity}}</td>
+                    <td>{{i.Total_Price}}</td>
+                    <td>x</td>
 
                 </tr>
+                    {% endfor %}
 
 			</table>
 			        <div style="background-color: #f9f9f9; padding: 40px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
