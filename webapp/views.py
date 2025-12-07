@@ -42,13 +42,36 @@ def contact_page(request):
     if uname:
         cart_count = CartDB.objects.filter(Username=request.session['username']).count
     return render(request,"contact.html",{'categories':categories,'cart_count':cart_count})
+
+
 def cart_page(request):
+
+    cases=CartDB.objects.filter(Username= request.session['username'])
+
+    # count in cart icon
     cart_count = 0
     uname = request.session.get('username')
     if uname:
         cart_count = CartDB.objects.filter(Username=request.session['username']).count
-    cases=CartDB.objects.filter(Username= request.session['username'])
-    return render(request,"cart_page.html",{'cases':cases,'cart_count':cart_count})
+
+    # calculating total amount
+    sub_total=0
+    discount=0
+    delivery_charge=0
+    total_amount=0
+    for i in cases:
+        sub_total+=i.Total_Price
+        if sub_total>500:
+            delivery_charge=50
+        else :
+            delivery_charge=100
+        total_amount=sub_total+delivery_charge
+
+    return render(request,"cart_page.html",{'cases':cases,'cart_count':cart_count,
+                                            'sub_total':sub_total,'delivery_charge':delivery_charge,
+                                            'total_amount':total_amount,'discount':discount})
+
+
 def filtered_page(request,model):
     cover=CaseDb.objects.filter(Phone_Model=model )
     cart_count = 0

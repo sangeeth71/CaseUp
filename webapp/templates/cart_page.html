@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'web/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'web/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap"
@@ -179,70 +180,84 @@
     <div style="height:100px"></div>
 </section>
 <!--=====================================================================================================================-->
-<div class="text-center mx-auto d-flex" style="margin:65px;width:80%;">
-    <table class="table table-dark table-hover table-bordered">
-        <tr>
-            <th>Image</th>
-            <th>Cover Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total Price</th>
-            <th>delete</th>
-        </tr>
-        {% for i in cases %}
-        <tr>
-            <td><img src="{{i.Case_Image.url}}" alt="" width="90px"></td>
-            <td>{{i.CoverName}}</td>
-            <td>{{i.Price}}</td>
-            <td>{{i.Quantity}}</td>
-            <td>{{i.Total_Price}}</td>
-            <td>x</td>
+<div class="text-center mx-auto d-flex" style="margin:65px;width:90%;gap:40px;">
 
-        </tr>
-        {% endfor %}
 
-    </table>
-    <div style="background-color: #f9f9f9; padding: 40px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <div style="
+        max-height: 500px;
+        overflow-y: auto;
+        border-radius: 10px;
+        border: 1px solid #444;
+        flex: 1;
+    ">
+        <table class="table table-dark table-hover table-bordered"
+               style="border-radius:10px; overflow:hidden; margin:0;">
+            <tr>
+                <th>Image</th>
+                <th>Cover Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Delete</th>
+            </tr>
 
-        <div style="max-width: 350px; margin: auto;  padding: 24px;height:400px;">
+            {% for i in cases %}
+            <tr>
+                <td><img src="{{i.Case_Image.url}}" alt="" width="90px"></td>
+                <td>{{i.CoverName}}</td>
+                <td>{{i.Price}}</td>
+                <td>{{i.Quantity}}</td>
+                <td>{{i.Total_Price}}</td>
+                <td><a href=""><i class="fa-solid fa-xmark" style="color: #ff0000;"></i></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+<!--   cart total-->
+    <div style="background-color: #f9f9f9; padding: 40px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; border-radius:12px; height:400px;">
+
+        <div style="max-width: 350px; margin: auto; padding: 24px;">
 
             <h2 style="font-size: 20px; font-weight: 600; margin-top: 0; margin-bottom: 24px; color: #222;">
                 Cart Totals
             </h2>
+
             <form action="">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 16px;">
                     <span style="color: #555;">Subtotal</span>
-                    <span style="color: #333;">200.00</span>
+                    <span style="color: #333;">₹{{sub_total}}</span>
                 </div>
 
                 <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 16px;">
                     <span style="color: #555;">Delivery</span>
-                    <span style="color: #333;">100.00</span>
+                    <span style="color: #333;">₹{{delivery_charge}}</span>
                 </div>
 
                 <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 16px;">
                     <span style="color: #555;">Discount</span>
-                    <span style="color: #333;">73.00</span>
+                    <span style="color: #333;">₹{{discount}}</span>
                 </div>
 
                 <hr style="border: 0; border-top: 1px solid #eaeaea; margin: 20px 0;">
 
                 <div style="display: flex; justify-content: space-between; align-items: center; font-size: 16px;">
                     <span style="color: #333; text-transform: uppercase; font-weight: 500;">TOTAL</span>
-                    <span style="color: #111; font-size: 18px; font-weight: 700;">227.00</span>
+                    <span style="color: #111; font-size: 18px; font-weight: 700;">₹{{total_amount}}</span>
                 </div>
+
                 <div style="max-width: 350px; margin: auto; margin-top: 24px;">
                     <button style="width: 100%; background-color:black; color: #ffffff; padding: 16px; font-size: 16px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer;">
                         Proceed to Checkout
                     </button>
                 </div>
-            </form>
 
+            </form>
         </div>
 
     </div>
-
 </div>
+
 
 <!--===============================================================================================================-->
 <section>
