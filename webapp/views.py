@@ -23,7 +23,8 @@ def contact_page(request):
     categories = CategoryDb.objects.all()
     return render(request,"contact.html",{'categories':categories})
 def cart_page(request):
-    cases=CartDB.objects.all()
+
+    cases=CartDB.objects.filter(Username= request.session['username'])
     return render(request,"cart_page.html",{'cases':cases})
 def filtered_page(request,model):
     cover=CaseDb.objects.filter(Phone_Model=model )

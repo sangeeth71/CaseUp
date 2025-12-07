@@ -1,9 +1,7 @@
-
-
 <!DOCTYPE html>
 {% load static %}
 <html>
-  <head>
+<head>
     <title>Ministore</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,577 +13,632 @@
     <meta name="description" content="">
     <link rel="stylesheet" type="text/css" href="{% static 'web/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'web/style.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap"
+          rel="stylesheet">
     <!-- script
     ================================================== -->
     <script src="{% static 'web/js/modernizr.js"></script>
     <style>
-      .image-holder imgg {
-      height: 300px;         /* set desired uniform height */
-      width: 100%;           /* make the image fill the container width */
-      object-fit: cover;     /* crop image proportionally to fit */
-      border-radius: 10px;   /* optional: smooth edges */
-      }
+        .image-holder imgg {
+        height: 300px;         /* set desired uniform height */
+        width: 100%;           /* make the image fill the container width */
+        object-fit: cover;     /* crop image proportionally to fit */
+        border-radius: 10px;   /* optional: smooth edges */
+        }
     </style>
-  </head>
-  <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-<!--      search icon-->
-      <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
+      tabindex="0">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <!--      search icon-->
+    <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <title>Search</title>
-        <path fill="currentColor" d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z" />
-      </symbol>
-<!--      user icon-->
-      <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 16 16">
-        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-      </symbol>
-<!--     cart icon-->
-      <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 16 16">
-        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-      </symbol>
+        <path fill="currentColor"
+              d="M19 3C13.488 3 9 7.488 9 13c0 2.395.84 4.59 2.25 6.313L3.281 27.28l1.439 1.44l7.968-7.969A9.922 9.922 0 0 0 19 23c5.512 0 10-4.488 10-10S24.512 3 19 3zm0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8s-8-3.57-8-8s3.57-8 8-8z"/>
+    </symbol>
+    <!--      user icon-->
+    <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+    </symbol>
+    <!--     cart icon-->
+    <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 16 16">
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </symbol>
 
-<!--      quote icon-->
-      <symbol xmlns="http://www.w3.org/2000/svg" id="quote" viewBox="0 0 24 24">
-        <path fill="currentColor" d="m15 17l2-4h-4V6h7v7l-2 4h-3Zm-9 0l2-4H4V6h7v7l-2 4H6Z" />
-      </symbol>
+    <!--      quote icon-->
+    <symbol xmlns="http://www.w3.org/2000/svg" id="quote" viewBox="0 0 24 24">
+        <path fill="currentColor" d="m15 17l2-4h-4V6h7v7l-2 4h-3Zm-9 0l2-4H4V6h7v7l-2 4H6Z"/>
+    </symbol>
 
 
-      <symbol xmlns="http://www.w3.org/2000/svg" id="nav-icon" viewBox="0 0 16 16">
-        <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 16 16">
-        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-      </symbol>
-      <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
-        <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
-      </symbol>
-    </svg>
+    <symbol xmlns="http://www.w3.org/2000/svg" id="nav-icon" viewBox="0 0 16 16">
+        <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z"/>
+    </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 16 16">
+        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+    </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
+        <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z"/>
+    </symbol>
+</svg>
 
-    <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
-      <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+<header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
+    <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">
-            <img src="{% static 'web/image/logooo.png' %}" alt="" width="150px">
-          </a>
-          <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <svg class="navbar-icon">
-              <use xlink:href="#navbar-icon"></use>
-            </svg>
-          </button>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
-            <div class="offcanvas-header px-4 pb-0">
-              <a class="navbar-brand" href="index.html">
-                <img src="{% static 'web/images/img.png' %}" class="logo">
-              </a>
-              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link me-4 active" href="">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="{% url 'all_products' %}">Products</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Materials</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="{% url 'all_materials' %}" class="dropdown-item">All Materials</a>
-                    </li>
-                    {% for i in categories %}
+            <a class="navbar-brand" href="index.html">
+                <img src="{% static 'web/image/logooo.png' %}" alt="" width="150px">
+            </a>
+            <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <svg class="navbar-icon">
+                    <use xlink:href="#navbar-icon"></use>
+                </svg>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                <div class="offcanvas-header px-4 pb-0">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="{% static 'web/images/img.png' %}" class="logo">
+                    </a>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                            aria-label="Close" data-bs-target="#bdNavbar"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul id="navbar"
+                        class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link me-4 active" href="">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-4" href="{% url 'all_products' %}">Products</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
+                               role="button" aria-expanded="false">Materials</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{% url 'all_materials' %}" class="dropdown-item">All Materials</a>
+                                </li>
+                                {% for i in categories %}
 
-                    <li>
-                      <a href="{% url 'material_filter_page' mate=i.Material_Name %}" class="dropdown-item">{{i.Material_Name}}</a>
-                    </li>
-                    {% endfor %}
-                  </ul>
-                </li>
+                                <li>
+                                    <a href="{% url 'material_filter_page' mate=i.Material_Name %}"
+                                       class="dropdown-item">{{i.Material_Name}}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
 
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="{% url 'about_us' %}">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="{% url 'contact_page' %}">Contact</a>
-                </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-4" href="{% url 'about_us' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-4" href="{% url 'contact_page' %}">Contact</a>
+                        </li>
 
-                <li>
-                {% if request.session.username %}
-							<a href="#" class="user-account for-buy"><i
-									class="icon icon-user"></i><span>{{request.session.username}} </span>
-							</a>
-                  <a href=""> </a>
-                  <a href="{% url 'log_out' %}" style="color:red;">log_out</a>
-							{% else %}
+                        <li>
+                            {% if request.session.username %}
+                            <a href="#" class="user-account for-buy"><i
+                                    class="icon icon-user"></i><span>{{request.session.username}} </span>
+                            </a>
+                            <a href=""> </a>
+                            <a href="{% url 'log_out' %}" style="color:red;">log_out</a>
+                            {% else %}
 
-							<a href="{% url 'log_in' %}" class="user-account for-buy"><i
-									class="icon icon-user"></i><span>Login</span>
-							</a>
-							{% endif %}
-                </li>
-                <li class="nav-item ">
-                  <div class="user-items ps-5">
-                    <ul class="d-flex justify-content-end list-unstyled">
-                      <li class="search-item pe-3">
-                        <a href="#" class="search-button">
-                          <svg class="search">
-                            <use xlink:href="#search"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li class="pe-3">
-                        <a href="#">
-                          <svg class="user">
-                            <use xlink:href="#user"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{% url 'cart_page' %}">
-                          <svg class="cart">
-                            <use xlink:href="#cart"></use>
-                          </svg>
-                        </a>
-                      </li>
+                            <a href="{% url 'log_in' %}" class="user-account for-buy"><i
+                                    class="icon icon-user"></i><span>Login</span>
+                            </a>
+                            {% endif %}
+                        </li>
+                        <li class="nav-item ">
+                            <div class="user-items ps-5">
+                                <ul class="d-flex justify-content-end list-unstyled">
+                                    <li class="search-item pe-3">
+                                        <a href="#" class="search-button">
+                                            <svg class="search">
+                                                <use xlink:href="#search"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="pe-3">
+                                        <a href="#">
+                                            <svg class="user">
+                                                <use xlink:href="#user"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'cart_page' %}">
+                                            <div style="position: relative; display: inline-block;">
+
+                                                <svg class="cart" style="width: 20px; height: 20px;">
+                                                    <use xlink:href="#cart"></use>
+                                                </svg>
+
+                                                <span style="position: absolute;top: -6px;right: -10px;background: red;color: white;
+                                                                font-size: 10px;width: 18px;  height: 18px; border-radius: 50%;
+                                                                display: flex; align-items: center;justify-content: center;font-weight: bold;">
+                                                2</span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
-                  </div>
-                </li>
-              </ul>
+                </div>
             </div>
-          </div>
         </div>
-      </nav>
-    </header>
+    </nav>
+</header>
 <!--=================================================================================================================-->
-    <section id="" class="position-relative overflow-hidden bg-light-blue">
-      <div class="swiper main-swiper">
+<section id="" class="position-relative overflow-hidden bg-light-blue">
+    <div class="swiper main-swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="container">
-              <div class="row d-flex align-items-center">
-                <div class="col-md-6">
-                  <div class="banner-content">
-                    <h1 class="display-2 text-uppercase text-dark pb-5">From Basic to Bold - We've Got It All</h1>
-                    <a href="{% url 'all_products' %}" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
-                  </div>
+            <div class="swiper-slide">
+                <div class="container">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-6">
+                            <div class="banner-content">
+                                <h1 class="display-2 text-uppercase text-dark pb-5">From Basic to Bold - We've Got It
+                                    All</h1>
+                                <a href="{% url 'all_products' %}"
+                                   class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="image-holder">
+                                <img src="{% static 'web/banner/banner.webp' %}" alt="banner">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-5">
-                  <div class="image-holder">
-                    <img src="{% static 'web/banner/banner.webp' %}" alt="banner">
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="container">
-              <div class="row d-flex flex-wrap align-items-center">
-                <div class="col-md-6">
-                  <div class="banner-content">
-                    <h1 class="display-2 text-uppercase text-dark pb-5">Technology Hack You Won't Get</h1>
-                    <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
-                  </div>
+            <div class="swiper-slide">
+                <div class="container">
+                    <div class="row d-flex flex-wrap align-items-center">
+                        <div class="col-md-6">
+                            <div class="banner-content">
+                                <h1 class="display-2 text-uppercase text-dark pb-5">Technology Hack You Won't Get</h1>
+                                <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop
+                                    Product</a>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="image-holder">
+                                <img src="images/banner-image.png" alt="banner">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-5">
-                  <div class="image-holder">
-                    <img src="images/banner-image.png" alt="banner">
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 
-    </section>
+</section>
 <!--=====================================================================================================================-->
-    <section id="" class="padding-large">
-      <div class="container">
+<section id="" class="padding-large">
+    <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex">
-              <div class="icon-box-icon pe-3 pb-3">
-                <svg class="cart-outline">
-                  <use xlink:href="#cart-outline" />
-                </svg>
-              </div>
-              <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">Free delivery</h3>
-                <p>Consectetur adipi elit lorem ipsum dolor sit amet.</p>
-              </div>
+            <div class="col-lg-3 col-md-6 pb-3">
+                <div class="icon-box d-flex">
+                    <div class="icon-box-icon pe-3 pb-3">
+                        <svg class="cart-outline">
+                            <use xlink:href="#cart-outline"/>
+                        </svg>
+                    </div>
+                    <div class="icon-box-content">
+                        <h3 class="card-title text-uppercase text-dark">Free delivery</h3>
+                        <p>Consectetur adipi elit lorem ipsum dolor sit amet.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex">
-              <div class="icon-box-icon pe-3 pb-3">
-                <svg class="quality">
-                  <use xlink:href="#quality" />
-                </svg>
-              </div>
-              <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">Quality guarantee</h3>
-                <p>Dolor sit amet orem ipsu mcons ectetur adipi elit.</p>
-              </div>
+            <div class="col-lg-3 col-md-6 pb-3">
+                <div class="icon-box d-flex">
+                    <div class="icon-box-icon pe-3 pb-3">
+                        <svg class="quality">
+                            <use xlink:href="#quality"/>
+                        </svg>
+                    </div>
+                    <div class="icon-box-content">
+                        <h3 class="card-title text-uppercase text-dark">Quality guarantee</h3>
+                        <p>Dolor sit amet orem ipsu mcons ectetur adipi elit.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex">
-              <div class="icon-box-icon pe-3 pb-3">
-                <svg class="price-tag">
-                  <use xlink:href="#price-tag" />
-                </svg>
-              </div>
-              <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">Daily offers</h3>
-                <p>Amet consectetur adipi elit loreme ipsum dolor sit.</p>
-              </div>
+            <div class="col-lg-3 col-md-6 pb-3">
+                <div class="icon-box d-flex">
+                    <div class="icon-box-icon pe-3 pb-3">
+                        <svg class="price-tag">
+                            <use xlink:href="#price-tag"/>
+                        </svg>
+                    </div>
+                    <div class="icon-box-content">
+                        <h3 class="card-title text-uppercase text-dark">Daily offers</h3>
+                        <p>Amet consectetur adipi elit loreme ipsum dolor sit.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex">
-              <div class="icon-box-icon pe-3 pb-3">
-                <svg class="shield-plus">
-                  <use xlink:href="#shield-plus" />
-                </svg>
-              </div>
-              <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">100% secure payment</h3>
-                <p>Rem Lopsum dolor sit amet, consectetur adipi elit.</p>
-              </div>
+            <div class="col-lg-3 col-md-6 pb-3">
+                <div class="icon-box d-flex">
+                    <div class="icon-box-icon pe-3 pb-3">
+                        <svg class="shield-plus">
+                            <use xlink:href="#shield-plus"/>
+                        </svg>
+                    </div>
+                    <div class="icon-box-content">
+                        <h3 class="card-title text-uppercase text-dark">100% secure payment</h3>
+                        <p>Rem Lopsum dolor sit amet, consectetur adipi elit.</p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 <!--===============================================================================================================-->
 <section id="" class="product-store position-relative padding-large no-padding-top">
-  <div class="container">
-    <div class="row">
-      <div class="display-header d-flex justify-content-between pb-3">
-        <h2 class="display-7 text-dark text-uppercase">Select Models</h2>
-        <div class="btn-right">
-          <a href="{% url 'all_products' %}" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+    <div class="container">
+        <div class="row">
+            <div class="display-header d-flex justify-content-between pb-3">
+                <h2 class="display-7 text-dark text-uppercase">Select Models</h2>
+                <div class="btn-right">
+                    <a href="{% url 'all_products' %}" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+                </div>
+            </div>
+
+            <div class="swiper product-swiper overflow-auto">
+                <div class="swiper-wrapper d-flex">
+
+                    <!-- iPhone 11 -->
+                    <div class="swiper-slide">
+                        <div class="product-card position-relative">
+                            <div class="image-holder imgg">
+                                <img src="https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iphone_11-rosette-family-lineup-091019_big.jpg.large_2x.jpg"
+                                     alt="iPhone 11" class="img-fluid">
+                            </div>
+                            <div class="cart-concern position-absolute">
+                                <div class="cart-button d-flex">
+                                    <a href="{% url 'filtered_page' model='11' %}" class="btn btn-medium btn-black">View
+                                        Cases
+                                        <svg class="cart-outline">
+                                            <use xlink:href="#cart-outline"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-detail pt-3">
+                                <h3 class="card-title text-uppercase"><a href="#">iPhone 11</a></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iPhone 12 -->
+                    <div class="swiper-slide">
+                        <div class="product-card position-relative">
+                            <div class="image-holder imgg">
+                                <img src="https://m.media-amazon.com/images/I/51-ZD+JBZ7L.jpg" alt="iPhone 12"
+                                     class="img-fluid">
+                            </div>
+                            <div class="cart-concern position-absolute">
+                                <div class="cart-button d-flex">
+                                    <a href="{% url 'filtered_page' model='12' %}" class="btn btn-medium btn-black">View
+                                        Cases
+                                        <svg class="cart-outline">
+                                            <use xlink:href="#cart-outline"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-detail pt-3">
+                                <h3 class="card-title text-uppercase"><a href="#">iPhone 12</a></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iPhone 13 -->
+                    <div class="swiper-slide">
+                        <div class="product-card position-relative">
+                            <div class="image-holder imgg">
+                                <img src="https://www.imagineonline.store/cdn/shop/files/iPhone_13_Starlight_PDP_Image_Position-1A__GBEN.jpg?v=1759733501&width=1445"
+                                     alt="iPhone 13" class="img-fluid">
+                            </div>
+                            <div class="cart-concern position-absolute">
+                                <div class="cart-button d-flex">
+                                    <a href="{% url 'filtered_page' model='13' %}" class="btn btn-medium btn-black">View
+                                        Cases
+                                        <svg class="cart-outline">
+                                            <use xlink:href="#cart-outline"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-detail pt-3">
+                                <h3 class="card-title text-uppercase"><a href="#">iPhone 13</a></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iPhone 14 -->
+                    <div class="swiper-slide">
+                        <div class="product-card position-relative">
+                            <div class="image-holder imgg">
+                                <img src="https://m.media-amazon.com/images/I/618Bb+QzCmL.jpg" alt="iPhone 14"
+                                     class="img-fluid">
+                            </div>
+                            <div class="cart-concern position-absolute">
+                                <div class="cart-button d-flex">
+                                    <a href="{% url 'filtered_page' model='14' %}" class="btn btn-medium btn-black">View
+                                        Carts
+                                        <svg class="cart-outline">
+                                            <use xlink:href="#cart-outline"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-detail pt-3">
+                                <h3 class="card-title text-uppercase"><a href="#">iPhone 14</a></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iPhone 15 -->
+                    <div class="swiper-slide">
+                        <div class="product-card position-relative">
+                            <div class="image-holder imgg">
+                                <img src="https://m.media-amazon.com/images/I/71657TiFeHL.jpg" alt="iPhone 15"
+                                     class="img-fluid">
+                            </div>
+                            <div class="cart-concern position-absolute">
+                                <div class="cart-button d-flex">
+                                    <a href="{% url 'filtered_page' model='15' %}" class="btn btn-medium btn-black">View
+                                        Cases
+                                        <svg class="cart-outline">
+                                            <use xlink:href="#cart-outline"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-detail pt-3">
+                                <h3 class="card-title text-uppercase"><a href="#">iPhone 15</a></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iPhone 16 -->
+                    <div class="swiper-slide">
+                        <div class="product-card position-relative">
+                            <div class="image-holder imgg">
+                                <img src="https://iplanet.one/cdn/shop/files/iPhone_16_Pro_Desert_Titanium_PDP_Image_Position_1__en-IN_38a0c11d-1864-457e-a2e2-7333c0480a7b.jpg?v=1727249764"
+                                     alt="iPhone 16" class="img-fluid">
+                            </div>
+                            <div class="cart-concern position-absolute">
+                                <div class="cart-button d-flex">
+                                    <a href="{% url 'filtered_page' model='16' %}" class="btn btn-medium btn-black">View
+                                        Cases
+                                        <svg class="cart-outline">
+                                            <use xlink:href="#cart-outline"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-detail pt-3">
+                                <h3 class="card-title text-uppercase"><a href="#">iPhone 16</a></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- iPhone 17 -->
+                    <div class="swiper-slide">
+                        <div class="product-card position-relative">
+                            <div class="image-holder imgg">
+                                <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-card-40-17pro-202509?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=WVVFRzUzVk1oblJhbW9PbGNSU25jaUtlSkZ1cHdCU1J4ZWZjamdoYzhpRkMxQXc4S3pBZE5lUDJlTzVYSUYydFMwV0hhcmdVdXZzZ1NwTlFUaEgwTDc0akx0V0lSSVRoL2tPb3ZabW5DM0k"
+                                     alt="iPhone 17" class="img-fluid">
+                            </div>
+                            <div class="cart-concern position-absolute">
+                                <div class="cart-button d-flex">
+                                    <a href="{% url 'filtered_page' model='17' %}" class="btn btn-medium btn-black">View
+                                        Cases
+                                        <svg class="cart-outline">
+                                            <use xlink:href="#cart-outline"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-detail pt-3">
+                                <h3 class="card-title text-uppercase"><a href="#">iPhone 17</a></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="swiper product-swiper overflow-auto">
-        <div class="swiper-wrapper d-flex">
-
-          <!-- iPhone 11 -->
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder imgg">
-                <img src="https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iphone_11-rosette-family-lineup-091019_big.jpg.large_2x.jpg" alt="iPhone 11" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="{% url 'filtered_page' model='11' %}" class="btn btn-medium btn-black">View Cases
-                    <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-                  </a>
-                </div>
-              </div>
-              <div class="card-detail pt-3">
-                <h3 class="card-title text-uppercase"><a href="#">iPhone 11</a></h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- iPhone 12 -->
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder imgg">
-                <img src="https://m.media-amazon.com/images/I/51-ZD+JBZ7L.jpg" alt="iPhone 12" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="{% url 'filtered_page' model='12' %}" class="btn btn-medium btn-black">View Cases
-                    <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-                  </a>
-                </div>
-              </div>
-              <div class="card-detail pt-3">
-                <h3 class="card-title text-uppercase"><a href="#">iPhone 12</a></h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- iPhone 13 -->
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder imgg">
-                <img src="https://www.imagineonline.store/cdn/shop/files/iPhone_13_Starlight_PDP_Image_Position-1A__GBEN.jpg?v=1759733501&width=1445" alt="iPhone 13" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="{% url 'filtered_page' model='13' %}" class="btn btn-medium btn-black">View Cases
-                    <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-                  </a>
-                </div>
-              </div>
-              <div class="card-detail pt-3">
-                <h3 class="card-title text-uppercase"><a href="#">iPhone 13</a></h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- iPhone 14 -->
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder imgg">
-                <img src="https://m.media-amazon.com/images/I/618Bb+QzCmL.jpg" alt="iPhone 14" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="{% url 'filtered_page' model='14' %}" class="btn btn-medium btn-black">View Carts
-                    <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-                  </a>
-                </div>
-              </div>
-              <div class="card-detail pt-3">
-                <h3 class="card-title text-uppercase"><a href="#">iPhone 14</a></h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- iPhone 15 -->
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder imgg">
-                <img src="https://m.media-amazon.com/images/I/71657TiFeHL.jpg" alt="iPhone 15" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="{% url 'filtered_page' model='15' %}" class="btn btn-medium btn-black">View Cases
-                    <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-                  </a>
-                </div>
-              </div>
-              <div class="card-detail pt-3">
-                <h3 class="card-title text-uppercase"><a href="#">iPhone 15</a></h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- iPhone 16 -->
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder imgg">
-                <img src="https://iplanet.one/cdn/shop/files/iPhone_16_Pro_Desert_Titanium_PDP_Image_Position_1__en-IN_38a0c11d-1864-457e-a2e2-7333c0480a7b.jpg?v=1727249764" alt="iPhone 16" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="{% url 'filtered_page' model='16' %}" class="btn btn-medium btn-black">View Cases
-                    <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-                  </a>
-                </div>
-              </div>
-              <div class="card-detail pt-3">
-                <h3 class="card-title text-uppercase"><a href="#">iPhone 16</a></h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- iPhone 17 -->
-          <div class="swiper-slide">
-            <div class="product-card position-relative">
-              <div class="image-holder imgg">
-                <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-card-40-17pro-202509?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=WVVFRzUzVk1oblJhbW9PbGNSU25jaUtlSkZ1cHdCU1J4ZWZjamdoYzhpRkMxQXc4S3pBZE5lUDJlTzVYSUYydFMwV0hhcmdVdXZzZ1NwTlFUaEgwTDc0akx0V0lSSVRoL2tPb3ZabW5DM0k" alt="iPhone 17" class="img-fluid">
-              </div>
-              <div class="cart-concern position-absolute">
-                <div class="cart-button d-flex">
-                  <a href="{% url 'filtered_page' model='17' %}" class="btn btn-medium btn-black">View Cases
-                    <svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg>
-                  </a>
-                </div>
-              </div>
-              <div class="card-detail pt-3">
-                <h3 class="card-title text-uppercase"><a href="#">iPhone 17</a></h3>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="swiper-pagination position-absolute text-center"></div>
+    <div class="swiper-pagination position-absolute text-center"></div>
 </section>
 
 <!--============================================================================================================================-->
 
 <!--    ========================================================================================================================-->
 <section id="" class="product-store padding-large position-relative">
-      <div class="container">
+    <div class="container">
         <div class="row">
-          <div class="display-header d-flex justify-content-between pb-3">
-            <h2 class="display-7 text-dark text-uppercase">Materials</h2>
-            <div class="btn-right">
-              <a href="{% url 'all_materials' %}" class="btn btn-medium btn-normal text-uppercase">All materials</a>
-            </div>
-          </div>
-          <div class="swiper product-watch-swiper">
-            <div class="swiper-wrapper">
-          {% for p in categories %}
-              <div class="swiper-slide">
-                <div class="product-card position-relative">
-                  <div class="image-holder">
-                    <a href="{% url 'material_filter_page' mate=p.Material_Name %}"><img src="{{p.Image.url}}" alt="product-item" class="img-fluid"></a>
-                  </div>
-                  <div class="cart-concern position-absolute">
-                    <div class="cart-button d-flex">
-                    </div>
-                  </div>
-                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                    <h3 class="card-title text-uppercase">
-                      <a href="{% url 'material_filter_page' mate=p.Material_Name %}">{{p.Material_Name}}</a>
-                    </h3>
-                  </div>
+            <div class="display-header d-flex justify-content-between pb-3">
+                <h2 class="display-7 text-dark text-uppercase">Materials</h2>
+                <div class="btn-right">
+                    <a href="{% url 'all_materials' %}" class="btn btn-medium btn-normal text-uppercase">All
+                        materials</a>
                 </div>
-              </div>
-
-          {% endfor %}
             </div>
-          </div>
+            <div class="swiper product-watch-swiper">
+                <div class="swiper-wrapper">
+                    {% for p in categories %}
+                    <div class="swiper-slide">
+                        <div class="product-card position-relative">
+                            <div class="image-holder">
+                                <a href="{% url 'material_filter_page' mate=p.Material_Name %}"><img
+                                        src="{{p.Image.url}}" alt="product-item" class="img-fluid"></a>
+                            </div>
+                            <div class="cart-concern position-absolute">
+                                <div class="cart-button d-flex">
+                                </div>
+                            </div>
+                            <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                                <h3 class="card-title text-uppercase">
+                                    <a href="{% url 'material_filter_page' mate=p.Material_Name %}">{{p.Material_Name}}</a>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="swiper-pagination position-absolute text-center"></div>
-    </section>
+    </div>
+    <div class="swiper-pagination position-absolute text-center"></div>
+</section>
 <!--===================================================================================================================================-->
-    <section id="" class="bg-light-blue overflow-hidden mt-5 padding-xlarge" style="background-image: url('https://www.agood.com/cdn/shop/articles/what-to-do-with-your-old-mobile-case-banner.jpg?v=1687287636'); background-repeat: no-repeat;">
-      <div class="img">
+<section id="" class="bg-light-blue overflow-hidden mt-5 padding-xlarge"
+         style="background-image: url('https://www.agood.com/cdn/shop/articles/what-to-do-with-your-old-mobile-case-banner.jpg?v=1687287636'); background-repeat: no-repeat;">
+    <div class="img">
 
         <img src="" alt="">
 
-        </div>
-      </div>
-    </section>
+    </div>
+    </div>
+</section>
 <!--=====================================================================================================================-->
-    <section id="" class="position-relative">
-      <div class="container">
+<section id="" class="position-relative">
+    <div class="container">
         <div class="row">
-          <div class="review-content position-relative">
-            <div class="swiper testimonial-swiper">
-              <div class="quotation text-center">
-                <svg class="quote">
-                  <use xlink:href="#quote" />
-                </svg>
-              </div>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide text-center d-flex justify-content-center">
-                  <div class="review-item col-md-10">
-                    <i class="icon icon-review"></i>
-                    <blockquote>"Quality is remembered long after the price is forgotten.”</blockquote>
-                    <div class="author-detail">
-                      <div class="name text-dark text-uppercase pt-2">Aldo Gucci / Gucci Family Slogan</div>
+            <div class="review-content position-relative">
+                <div class="swiper testimonial-swiper">
+                    <div class="quotation text-center">
+                        <svg class="quote">
+                            <use xlink:href="#quote"/>
+                        </svg>
                     </div>
-                  </div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide text-center d-flex justify-content-center">
+                            <div class="review-item col-md-10">
+                                <i class="icon icon-review"></i>
+                                <blockquote>"Quality is remembered long after the price is forgotten.”</blockquote>
+                                <div class="author-detail">
+                                    <div class="name text-dark text-uppercase pt-2">Aldo Gucci / Gucci Family Slogan
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="swiper-pagination"></div>
-    </section>
+    </div>
+    <div class="swiper-pagination"></div>
+</section>
 <!--===============================================================================================================-->
 <section>
-<!--  blank <space-->
-  <div style="height:100px"></div>
-  </space-->
+    <!--  blank <space-->
+    <div style="height:100px"></div>
+    </space-->
 </section>
 <!--=========================================================================================================-->
-    <footer id="" class="overflow-hidden">
-      <div class="container">
+<footer id="" class="overflow-hidden">
+    <div class="container">
         <div class="row">
-          <div class="footer-top-area">
-            <div class="row d-flex flex-wrap justify-content-between">
-<!--             -->
-              <div class="col-lg-2 col-sm-6 pb-3">
-                <div class="footer-menu text-uppercase">
-                  <h5 class="widget-title pb-2">Quick Links</h5>
-                  <ul class="menu-list list-unstyled text-uppercase">
-                    <li class="menu-item pb-2">
-                      <a href="#">Home</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="{% url 'about_us' %}">About</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="#">Shop</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="#">Blogs</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="#">Contact</a>
-                    </li>
-                  </ul>
+            <div class="footer-top-area">
+                <div class="row d-flex flex-wrap justify-content-between">
+                    <!--             -->
+                    <div class="col-lg-2 col-sm-6 pb-3">
+                        <div class="footer-menu text-uppercase">
+                            <h5 class="widget-title pb-2">Quick Links</h5>
+                            <ul class="menu-list list-unstyled text-uppercase">
+                                <li class="menu-item pb-2">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="menu-item pb-2">
+                                    <a href="{% url 'about_us' %}">About</a>
+                                </li>
+                                <li class="menu-item pb-2">
+                                    <a href="#">Shop</a>
+                                </li>
+                                <li class="menu-item pb-2">
+                                    <a href="#">Blogs</a>
+                                </li>
+                                <li class="menu-item pb-2">
+                                    <a href="#">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 pb-3">
+                        <div class="footer-menu text-uppercase">
+                            <h5 class="widget-title pb-2">Help & Info Help</h5>
+                            <ul class="menu-list list-unstyled">
+                                <li class="menu-item pb-2">
+                                    <a href="#">Track Your Order</a>
+                                </li>
+                                <li class="menu-item pb-2">
+                                    <a href="#">Returns Policies</a>
+                                </li>
+                                <li class="menu-item pb-2">
+                                    <a href="#">Shipping + Delivery</a>
+                                </li>
+                                <li class="menu-item pb-2">
+                                    <a href="#">Contact Us</a>
+                                </li>
+                                <li class="menu-item pb-2">
+                                    <a href="#">Faqs</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 pb-3">
+                        <div class="footer-menu contact-item">
+                            <h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
+                            <p>Do you have any queries or suggestions? <a href="mailto:">sangeeth629@gmail.com</a>
+                            </p>
+                            <p>If you need support? Just give us a call. <a href="">+55 111 222 333 44</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-3 col-sm-6 pb-3">
-                <div class="footer-menu text-uppercase">
-                  <h5 class="widget-title pb-2">Help & Info Help</h5>
-                  <ul class="menu-list list-unstyled">
-                    <li class="menu-item pb-2">
-                      <a href="#">Track Your Order</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="#">Returns Policies</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="#">Shipping + Delivery</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="#">Contact Us</a>
-                    </li>
-                    <li class="menu-item pb-2">
-                      <a href="#">Faqs</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="col-lg-3 col-sm-6 pb-3">
-                <div class="footer-menu contact-item">
-                  <h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
-                  <p>Do you have any queries or suggestions? <a href="mailto:">sangeeth629@gmail.com</a>
-                  </p>
-                  <p>If you need support? Just give us a call. <a href="">+55 111 222 333 44</a>
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-      <hr>
-    </footer>
+    </div>
+    <hr>
+</footer>
 
-    <script src="{% static 'web/js/jquery-1.11.0.min.js' %}"></script>
-    <script src="{% static 'web/js/jquery-3.7.1.min.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="{% static 'web/js/bootstrap.bundle.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/plugins.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/script.js' %}"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="{% static 'web/js/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'web/js/jquery-3.7.1.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script type="text/javascript" src="{% static 'web/js/bootstrap.bundle.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'web/js/plugins.js' %}"></script>
+<script type="text/javascript" src="{% static 'web/js/script.js' %}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {% if messages %}
-    {% for i in messages %}
-        {% if i.tags == "success" %}
-            <script>
-                swal('{{i}}', '', 'success')
-            </script>
-        {% elif i.tags == "error" %}
-            <script>
-                swal('{{i}}', '', 'error')
-            </script>
-        {% elif i.tags == "warning" %}
-            <script>
-                swal('{{i}}', '', 'warning')
-            </script>
-        {% endif %}
-    {% endfor %}
+{% for i in messages %}
+{% if i.tags == "success" %}
+<script>
+    swal('{{i}}', '', 'success')
+</script>
+{% elif i.tags == "error" %}
+<script>
+    swal('{{i}}', '', 'error')
+</script>
+{% elif i.tags == "warning" %}
+<script>
+    swal('{{i}}', '', 'warning')
+</script>
 {% endif %}
-  </body>
+{% endfor %}
+{% endif %}
+</body>
 </html>
