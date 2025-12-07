@@ -51,7 +51,7 @@ def cart_page(request):
     cart_count = 0
     uname = request.session.get('username')
     if uname:
-        cart_count = CartDB.objects.filter(Username=request.session('username')).count
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
 
     # calculating total amount
     sub_total=0
