@@ -7,36 +7,71 @@ from django.contrib import messages
 
 # Create your views here.
 def home_page(request):
+    cart_count=0
+    uname = request.session.get('username')
+    if uname:
+        cart_count=CartDB.objects.filter(Username=request.session['username']).count
     categories=CategoryDb.objects.all()
-    return render(request,"home.html",{'categories':categories})
+    return render(request,"home.html",{'categories':categories,'cart_count':cart_count})
 def all_products(request):
     categories = CategoryDb.objects.all()
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
     cases=CaseDb.objects.all()
-    return render(request,"products.html",{'cases':cases,'categories':categories})
+    return render(request,"products.html",{'cases':cases,'categories':categories,'cart_count':cart_count})
 def all_materials(request):
     categories=CategoryDb.objects.all()
-    return render(request,"materials.html",{'categories':categories})
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
+    return render(request,"materials.html",{'categories':categories,'cart_count':cart_count})
 def about_us(request):
     categories = CategoryDb.objects.all()
-    return render(request,"about_us.html",{'categories':categories})
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
+    return render(request,"about_us.html",{'categories':categories,'cart_count':cart_count})
 def contact_page(request):
     categories = CategoryDb.objects.all()
-    return render(request,"contact.html",{'categories':categories})
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
+    return render(request,"contact.html",{'categories':categories,'cart_count':cart_count})
 def cart_page(request):
-
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
     cases=CartDB.objects.filter(Username= request.session['username'])
-    return render(request,"cart_page.html",{'cases':cases})
+    return render(request,"cart_page.html",{'cases':cases,'cart_count':cart_count})
 def filtered_page(request,model):
     cover=CaseDb.objects.filter(Phone_Model=model )
-    return render(request,"filtered.html",{'cover':cover})
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
+    return render(request,"filtered.html",{'cover':cover,'cart_count':cart_count})
 def material_filter_page(request,mate):
     categories = CategoryDb.objects.all()
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
     material=CaseDb.objects.filter(Material=mate)
-    return render(request, "mate_filtered.html",{'material': material,'categories':categories})
+    return render(request, "mate_filtered.html",{'material': material,'categories':categories,'cart_count':cart_count})
 def single_case(request,case_name):
     categories = CategoryDb.objects.all()
+    cart_count = 0
+    uname = request.session.get('username')
+    if uname:
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
     single=CaseDb.objects.get(Cover_Name=case_name)
-    return render(request,"single_case.html",{'single':single,'categories':categories})
+    return render(request,"single_case.html",{'single':single,'categories':categories,'cart_count':cart_count})
 
 def sign_up(request):
     return render(request,"sign_up.html")
