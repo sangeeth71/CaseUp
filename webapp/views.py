@@ -151,6 +151,8 @@ def save_cart(request):
                    Total_Price=total,Case_Image=img)
         obj.save()
         messages.success(request, "Added to Cart")
-
-
         return redirect(home_page)
+def checkout_page(request):
+    categories=CategoryDb.objects.all()
+
+    return render(request,"checkout.html",{'categories':categories})
