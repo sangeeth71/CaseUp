@@ -208,7 +208,7 @@
                 <td>{{i.Price}}</td>
                 <td>{{i.Quantity}}</td>
                 <td>{{i.Total_Price}}</td>
-                <td><a href=""><i class="fa-solid fa-xmark" style="color: #ff0000;"></i></a></td>
+                <td><a href="{% url 'delete_cart_item' item_id=i.id %}"><i class="fa-solid fa-xmark" style="color: #ff0000;"></i></a></td>
             </tr>
             {% endfor %}
         </table>
@@ -247,9 +247,10 @@
                 </div>
 
                 <div style="max-width: 350px; margin: auto; margin-top: 24px;">
+                    <a href="{% url 'checkout_page' %}">
                     <button style="width: 100%; background-color:black; color: #ffffff; padding: 16px; font-size: 16px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer;">
                         Proceed to Checkout
-                    </button>
+                    </button></a>
                 </div>
 
             </form>

@@ -152,7 +152,10 @@ def save_cart(request):
         obj.save()
         messages.success(request, "Added to Cart")
         return redirect(home_page)
+def delete_cart_item(request,item_id):
+    obj=CartDB.objects.filter(id=item_id)
+    obj.delete()
+    return redirect(cart_page)
 def checkout_page(request):
     categories=CategoryDb.objects.all()
-
     return render(request,"checkout.html",{'categories':categories})
