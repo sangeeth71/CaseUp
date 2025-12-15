@@ -3,6 +3,7 @@ from capp.models import CategoryDb,CaseDb
 from webapp.models import *
 from webapp.models import MessageDb
 from django.contrib import messages
+import razorpay
 
 
 # Create your views here.
@@ -178,6 +179,19 @@ def checkout_page(request):
     return render(request,"checkout.html",{'categories':categories,'cart_count':cart_count
                                            ,'sub_total':sub_total,'delivery_charge':delivery_charge,
                                             'total_amount':total_amount,'discount':discount})
+def payment_page(request):
+    # Adding details for payment
+    # Retrieve the data from orderdb with the specified ID
+    customer = orderDB.objects.order_by('-id').first()
+    # Get the amount of the specified customer
+    payy = customer.total_amt
+    amount = int(payy * 100)
+    payy_str = str(amount)
+    if request.method == "POST":
+        order_currency = 'INR'
+        client = razorpay.Client(auth=('rzp_test_0ib0jPwwZ7I1lT', 'VjHNO5zKeKxz8PYe7VnzwxMR'))
+        payment = client.order.create({'amount': amount, 'currency': order_currency})
+    return render(request,"payment.html",{'payy_str':payy_str})
 
 def save_order(request):
     if request.method == "POST":
@@ -192,4 +206,4 @@ def save_order(request):
         obj = orderDB(name=n,email=e,contact=c,address=add,city=city,
                       state=state,pincode=pin,total_amt=tot)
         obj.save()
-        return redirect(home_page)
+        return redirect(payment_page)

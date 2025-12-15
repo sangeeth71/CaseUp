@@ -11,6 +11,7 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="{% static 'web/css/about_us_style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'web/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'web/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
@@ -113,10 +114,10 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link me-4" href="{% url 'about_us' %}">About Us</a>
+                            <a class="nav-link me-4 " href="{% url 'about_us' %}">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-4 active" href="{% url 'contact_page' %}">Contact</a>
+                            <a class="nav-link me-4" href="{% url 'contact_page' %}">Contact</a>
                         </li>
 
                         {% if request.session.username %}
@@ -176,120 +177,48 @@
     </nav>
 </header>
 <!--=================================================================================================================-->
-<section>
-    <!--  blank <space-->
-    <div style="height:100px"></div>
-</section>
-<!--=====================================================================================================================-->
-<div class="container d-flex" style="width:100%; height:600px;">
-
-    <!-- LEFT SIDE - Billing Form (BLACK BACKGROUND) -->
-    <div style="height:100%; width:65%; background-color:#111; padding:40px;border-radius:9px">
-        <div style="max-width:600px; margin:auto; color:#fff;">
-            <h2 style="font-size:24px; margin-bottom:25px; font-weight:600;">Billing Details</h2>
-
-            <form method="POST" action="{% url 'save_order' %}">
-                {% csrf_token %}
-
-                <!-- Full Name -->
-                <div style="margin-bottom:15px;">
-                    <label style="font-weight:500;">Full Name</label><br>
-                    <input type="text" name="name" required
-                           style="width:100%; padding:12px; margin-top:6px; border:1px solid #fff; background:#111; color:#fff; border-radius:6px;">
-                </div>
-
-                <!-- Address -->
-                <div style="display:flex; gap:10px; margin-bottom:15px;">
-                    <div style="flex:1;">
-                        <label style="font-weight:500;">Street Address</label><br>
-                        <input type="text" name="address" required
-                               placeholder="House number and street name"
-                               style="width:100%; padding:12px; margin-top:6px; border:1px solid #fff; background:#111; color:#fff; border-radius:6px;">
-                    </div>
-                    <div style="flex:1;">
-                        <label style="font-weight:500;">State</label><br>
-                        <input type="text" name="state"
-                               placeholder="State"
-                               style="width:100%; padding:12px; margin-top:6px; border:1px solid #fff; background:#111; color:#fff; border-radius:6px;">
-                    </div>
-                </div>
-
-                <!-- City + Zip -->
-                <div style="display:flex; gap:10px; margin-bottom:15px;">
-                    <div style="flex:1;">
-                        <label style="font-weight:500;">Town / City</label><br>
-                        <input type="text" name="city" required
-                               style="width:100%; padding:12px; margin-top:6px; border:1px solid #fff; background:#111; color:#fff; border-radius:6px;">
-                    </div>
-                    <div style="flex:1;">
-                        <label style="font-weight:500;">Postcode / ZIP</label><br>
-                        <input type="text" name="pincode" required
-                               style="width:100%; padding:12px; margin-top:6px; border:1px solid #fff; background:#111; color:#fff; border-radius:6px;">
-                    </div>
-                </div>
-
-                <!-- Phone + Email -->
-                <div style="display:flex; gap:10px; margin-bottom:15px;">
-                    <div style="flex:1;">
-                        <label style="font-weight:500;">Phone</label><br>
-                        <input type="text" name="contact" required
-                               style="width:100%; padding:12px; margin-top:6px; border:1px solid #fff; background:#111; color:#fff; border-radius:6px;">
-                    </div>
-                    <div style="flex:1;">
-                        <label style="font-weight:500;">Email Address</label><br>
-                        <input type="email" name="email" required
-                               style="width:100%; padding:12px; margin-top:6px; border:1px solid #fff; background:#111; color:#fff; border-radius:6px;">
-                    </div>
-                </div>
-
-                <!-- Total Amount (Hidden) -->
-                <input type="hidden" name="total" value="{{total_amount}}">
-
-                <!-- Submit Button -->
-                <div style="max-width:350px; margin:auto; margin-top:24px;">
-                    <button type="submit"
-                            style="width:100%; background-color:#fff; color:#000; padding:16px;
-                       font-size:16px; font-weight:600; border:none; border-radius:50px; cursor:pointer;">
-                        Proceed to Checkout
-                    </button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-
-    <!-- RIGHT SIDE - Cart Totals (WHITE BACKGROUND) -->
-    <div style="height:100%; width:45%; background-color:#fff; color:#000; display:flex; align-items:center;">
-        <div style="background-color:#f2f2f2; padding:40px; border-radius:12px; width:80%; margin:auto; box-shadow:0 0 20px rgba(0,0,0,0.1);">
-
-            <h2 style="font-size:22px; font-weight:600; margin-bottom:24px; text-align:center;">Cart Totals</h2>
-
-            <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-size:16px;">
-                <span>Subtotal</span>
-                <span>₹{{sub_total}}</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-size:16px;">
-                <span>Delivery</span>
-                <span>₹{{delivery_charge}}</span>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-size:16px;">
-                <span>Discount</span>
-                <span>₹{{discount}}</span>
-            </div>
-
-            <hr style="border:0; border-top:1px solid #ccc; margin:20px 0;">
-
-            <div style="display:flex; justify-content:space-between; font-size:18px; font-weight:700;">
-                <span>Total</span>
-                <span>₹{{total_amount}}</span>
-            </div>
-
-        </div>
-    </div>
-
+<div>
+    <img src="{% static 'web/image/collection-banner_iPhone_Cases_Desktop.webp' %}" alt="" width="100%">
 </div>
+
+<form>
+
+
+    <div style="
+        width:100%;
+        display:flex;
+        justify-content:center;
+        margin:40px 0 20px 0;
+    ">
+        <button type="submit"
+                style="
+                    background: linear-gradient(135deg, #000000, #2b2b2b);
+                    color:#ffffff;
+                    padding:18px 55px;
+                    font-size:18px;
+                    font-weight:600;
+                    letter-spacing:1px;
+                    border:none;
+                    border-radius:50px;
+                    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+                    cursor:pointer;
+                    transition:all 0.3s ease;
+                    text-transform:uppercase;
+                "
+                onmouseover="
+                    this.style.transform='translateY(-3px)';
+                    this.style.boxShadow='0 15px 40px rgba(0,0,0,0.35)';
+                    this.style.background='linear-gradient(135deg, #1a1a1a, #000)';
+                "
+                onmouseout="
+                    this.style.transform='translateY(0)';
+                    this.style.boxShadow='0 10px 30px rgba(0,0,0,0.25)';
+                    this.style.background='linear-gradient(135deg, #000000, #2b2b2b)';
+                ">
+            Proceed to Pay →
+        </button>
+    </div>
+</form>
 
 <!--===============================================================================================================-->
 <section>
@@ -297,7 +226,7 @@
     <div style="height:100px"></div>
 </section>
 <!--=========================================================================================================-->
-<footer id="" class="overflow-hidden">
+<footer id="footer" class="overflow-hidden">
     <div class="container">
         <div class="row">
             <div class="footer-top-area">
@@ -369,5 +298,19 @@
 <script type="text/javascript" src="{% static 'web/js/bootstrap.bundle.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'web/js/plugins.js' %}"></script>
 <script type="text/javascript" src="{% static 'web/js/script.js' %}"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_0ib0jPwwZ7I1lT"
+    data-amount="{{payy_str}}"
+    data-currency="INR"
+    data-order_id="{{payment.order_id}}"
+    data-buttontext=""
+    data-name="Utopia"
+    data-description="Your description"
+    data-image=""
+    data-prefill.name="abc"
+    data-prefill.email="abc@gmail.com"
+    data-theme.color="#002f8c"
+ >
+</script>
 </body>
 </html>
