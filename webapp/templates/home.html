@@ -150,6 +150,7 @@
                                             </svg>
                                         </a>
                                     </li>
+                                    {% if request.session.username %}
                                     <li>
                                         <a href="{% url 'cart_page' %}">
                                             <div style="position: relative; display: inline-block;">
@@ -165,6 +166,7 @@
                                             </div>
                                         </a>
                                     </li>
+                                    {% endif %}
 
 
                                 </ul>

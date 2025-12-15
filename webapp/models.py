@@ -20,13 +20,14 @@ class CartDB(models.Model):
 
     def __str__(self):
         return self.CoverName
-class OrderDb(models.Model):
-    Name=models.CharField(max_length=100,null=True,blank=True)
-    Address=models.CharField(max_length=200,null=True,blank=True)
-    Appartment=models.CharField(max_length=100,null=True,blank=True)
-    City=models.CharField(max_length=100,null=True,blank=True)
-    Postcode=models.IntegerField(null=True,blank=True)
-    Phone=models.IntegerField(null=True,blank=True)
-    Email=models.EmailField(max_length=100,null=True,blank=True)
+class orderDB(models.Model):
+    name = models.CharField(max_length=50,null=True,blank=True)
+    email = models.CharField(max_length=50,null=True,blank=True)
+    contact = models.CharField(max_length=50,null=True,blank=True)
+    address = models.TextField(null=True,blank=True)
+    city = models.CharField(max_length=50,null=True,blank=True)
+    state = models.CharField(max_length=50,null=True,blank=True)
+    pincode = models.CharField(max_length=50,null=True,blank=True)
+    total_amt = models.IntegerField(null=True,blank=True)
     def __str__(self):
-        return self.Name
+        return self.name

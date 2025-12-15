@@ -150,6 +150,7 @@
                                             </svg>
                                         </a>
                                     </li>
+                                    {% if request.session.username %}
                                     <li>
                                         <a href="{% url 'cart_page' %}">
                                             <div style="position: relative; display: inline-block;">
@@ -165,6 +166,7 @@
                                             </div>
                                         </a>
                                     </li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </li>
@@ -223,7 +225,7 @@
                 Cart Totals
             </h2>
 
-            <form action="">
+
                 <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 16px;">
                     <span style="color: #555;">Subtotal</span>
                     <span style="color: #333;">₹{{sub_total}}</span>
@@ -248,12 +250,12 @@
 
                 <div style="max-width: 350px; margin: auto; margin-top: 24px;">
                     <a href="{% url 'checkout_page' %}">
-                    <button style="width: 100%; background-color:black; color: #ffffff; padding: 16px; font-size: 16px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer;">
+                    <button  style="width: 100%; background-color:black; color: #ffffff; padding: 16px; font-size: 16px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer;">
                         Proceed to Checkout
                     </button></a>
                 </div>
 
-            </form>
+
         </div>
 
     </div>

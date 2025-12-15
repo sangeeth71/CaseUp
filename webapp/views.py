@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from capp.models import CategoryDb,CaseDb
-from webapp.models import RegistrationDb, CartDB
+from webapp.models import *
 from webapp.models import MessageDb
 from django.contrib import messages
 
@@ -158,4 +158,38 @@ def delete_cart_item(request,item_id):
     return redirect(cart_page)
 def checkout_page(request):
     categories=CategoryDb.objects.all()
-    return render(request,"checkout.html",{'categories':categories})
+    cart_count = 0
+    uname = request.session.get('username')
+    cases = CartDB.objects.filter(Username=request.session['username'])
+    if uname:
+        cart_count = CartDB.objects.filter(Username=request.session['username']).count
+        # calculating total amount
+        sub_total = 0
+        discount = 0
+        delivery_charge = 0
+        total_amount = 0
+        for i in cases:
+            sub_total += i.Total_Price
+            if sub_total > 500:
+                delivery_charge = 50
+            else:
+                delivery_charge = 100
+            total_amount = sub_total + delivery_charge
+    return render(request,"checkout.html",{'categories':categories,'cart_count':cart_count
+                                           ,'sub_total':sub_total,'delivery_charge':delivery_charge,
+                                            'total_amount':total_amount,'discount':discount})
+
+def save_order(request):
+    if request.method == "POST":
+        n = request.POST.get('name')
+        e = request.POST.get('email')
+        c = request.POST.get('contact')
+        add = request.POST.get('address')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        pin = request.POST.get('pincode')
+        tot = request.POST.get('total')
+        obj = orderDB(name=n,email=e,contact=c,address=add,city=city,
+                      state=state,pincode=pin,total_amt=tot)
+        obj.save()
+        return redirect(home_page)
