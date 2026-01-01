@@ -105,6 +105,7 @@ def login_fn(request):
                 return redirect(admin_login)
         else :
             return redirect(admin_login)
+
 def logout_fn(request):
     del request.session['username']
     del request.session['password']
